@@ -1,38 +1,757 @@
-.App {
+body { font-family: 'Public Sans', sans-serif; margin: 0; color: #2d314d; }
+
+/* =========================================
+   1. DESKTOP NAVBAR CONTAINER
+   ========================================= */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10%;
+  height: 80px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+/* =========================================
+   2. DESKTOP NAVIGATION LINKS
+   ========================================= */
+.nav-links {
+  display: flex; /* Visible by default on Desktop */
+  align-items: center;
+}
+
+.nav-links a {
+  margin: 0 15px;
+  text-decoration: none;
+  color: #9698a6;
+  font-size: 0.9rem;
+  position: relative;
+  padding: 10px 0;
+  transition: 0.3s;
+}
+
+/* Green Gradient Underline on Hover */
+.nav-links a:hover { 
+  color: #2d314d; 
+}
+
+.nav-links a:hover::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -25px; /* Adjusts the line to the bottom of the white bar */
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(to right, #31d35c, #2bb7da);
+}
+
+/* =========================================
+   3. INVITE BUTTON STYLING
+   ========================================= */
+.invite-btn {
+  background: linear-gradient(to right, #31d35c, #2bb7da);
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 25px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.invite-btn:hover {
+  opacity: 0.8;
+  box-shadow: 0 5px 15px rgba(49, 211, 92, 0.4);
+}
+
+/* =========================================
+   4. HAMBURGER (Hidden on Desktop)
+   ========================================= */
+.hamburger {
+  display: none; 
+  cursor: pointer;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.bar {
+  width: 25px;
+  height: 3px;
+  background-color: #2d314d;
+}
+
+/* =========================================
+   5. MOBILE RESPONSIVENESS (max-width: 768px)
+   ========================================= */
+@media (max-width: 768px) {
+  /* Show Hamburger */
+  .hamburger {
+    display: flex;
+    z-index: 1001;
+  }
+
+  /* HIDE Desktop elements when on mobile */
+  .desktop-only, 
+  .navbar .invite-btn {
+    display: none; 
+  }
+
+  /* MOBILE MENU OVERLAY */
+  .nav-links {
+    display: none; /* Hidden by default until "active" */
+    position: absolute;
+    top: 80px;
+    left: 5%;
+    right: 5%;
+    background: white;
+    flex-direction: column;
+    padding: 30px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0px 50px 100px rgba(0,0,0,0.5);
+    z-index: 1000;
+  }
+
+  /* Show menu when "active" class is added by React */
+  .nav-links.active {
+    display: flex;
+  }
+
+  .nav-links a {
+    margin: 15px 0;
+    color: #2d314d;
+    font-weight: bold;
+    font-size: 1.2rem;
+    padding-bottom: 0; /* Remove underline padding for mobile */
+  }
+}
+
+/* Features Section */
+.features { 
+  padding: 80px 10%; 
+  background-color: #f3f4f6; 
+}
+.features-intro { 
+  margin-bottom: 50px; 
+  max-width: 600px; 
+}
+.features-intro h2 { 
+  font-size: 2.5rem; 
+  margin-bottom: 20px; 
+}
+.features-intro p { 
+  color: #9698a6; 
+  line-height: 1.6; 
+}
+.features-grid { 
+  display: grid; 
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+  gap: 30px; 
+}
+.feature-icon { 
+  font-size: 3rem; 
+  margin-bottom: 20px; 
+}
+.feature-item h3 { 
+  margin-bottom: 15px; 
+}
+.feature-item p { color: #9698a6; 
+  font-size: 0.9rem; 
+  line-height: 1.5; 
+}
+
+.feature-item {
+  background: white;        /* Gives the card a white background */
+  padding: 30px;            /* Adds space inside the box */
+  border-radius: 10px;      /* Rounds the corners */
+  border: 1px solid #eee;   /* Adds a subtle light-gray border */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: left;         /* Keeps text aligned to the left like the design */
+}
+
+/* Optional: Adds a nice shadow effect when you hover over the box */
+.feature-item:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+  border-color: #31d35c;    /* Border turns green on hover */
+}
+
+.feature-icon {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  display: block;
+}
+
+.feature-item h3 {
+  color: #2d314d;
+  margin-bottom: 15px;
+  font-size: 1.25rem;
+}
+
+.feature-item p {
+  color: #9698a6;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+/* --- Mobile Responsiveness --- */
+
+@media (max-width: 768px) {
+
+  /* Make grids 1 column only */
+  .features-grid, 
+  .articles-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .features-intro {
+    text-align: center;
+    margin: 0 auto 40px auto;
+  }
+}
+
+
+/* --- Desktop Layout (Default) --- */
+.hero {
+  display: flex;
+  align-items: center; /* Vertically centers the text and image */
+  justify-content: space-between;
+  padding: 0 0 0 10%;
+  background-color: #fafafa;
+  overflow: hidden;
+  
+  /* CRITICAL: Calculate height to fit exactly in one frame */
+  height: calc(100vh - 80px); 
+}
+
+.hero-text {
+  flex: 1;
+  max-width: 450px;
+  /* Remove margin-top from previous steps so 'align-items: center' works perfectly */
+  margin-top: 0; 
+}
+
+.hero-image-container {
+  flex: 1.2;
+  height: 100%; /* Ensures the container fills the height */
+  display: flex;
+  align-items: center; /* Vertically centers the image in its container */
+}
+
+.hero-mobile-img {
+  width: 120%;
+  height: auto;
+  /* Shift only for style, not for positioning */
+  transform: translateX(10%); 
+}
+/* Desktop Size */
+.hero-text h1 {
+  font-size: 3.5rem;
+}
+
+
+/* --- Mobile Layout Fix --- */
+@media (max-width: 768px) {
+  .hero {
+    flex-direction: column-reverse; /* Puts image on top for mobile */
+    padding: 0;
+    text-align: center;
+  }
+  .hero-image-container {
+    width: 100%;
+    height: 250px; /* Limits height so it doesn't take the whole screen */
+    background-size: cover;
+  }
+
+  .hero-mobile-img {
+    width: 100%;
+    max-width: 400px; /* Prevents it from getting too huge on tablets */
+    transform: translateY(-50px); /* Adjust this to position phones correctly */
+    margin: 0 auto;
+  }
+
+  .hero-text {
+    padding: 40px 24px;
+    max-width: 100%;
+  }
+
+  .hero-text h1 {
+    font-size: 2.5rem;
+  }
+  .hero {
+    display: flex;
+    flex-direction: column; /* Changed from column-reverse to put text first */
+    padding: 0;
+    text-align: center;
+    background-color: white;
+  }
+
+  .hero-text {
+    padding: 40px 24px;
+    order: 1; /* Forces text to the top */
+  }
+
+  .hero-image-container {
+    order: 2; /* Forces image to the bottom */
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    line-height: 0;
+  }
+
+  .hero-mobile-img {
+    width: 100%;
+    height: auto;
+    /* Reset any desktop transforms that might be pushing it up */
+    transform: none; 
+    margin: 0;
+  }
+}
+
+
+/* Footer */
+.footer { 
+  background-color: #2d314d; 
+  color: white; 
+  padding: 50px 10%; 
+}
+.footer-container { 
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+}
+.footer-links { 
+  display: flex; 
+  gap: 100px; 
+}
+.footer-links .col { 
+  display: flex; 
+  flex-direction: column; 
+  gap: 10px; 
+}
+.footer-links a { 
+  color: white; 
+  text-decoration: none; 
+  font-size: 0.9rem; 
+  transition: 0.3s; 
+}
+.footer-links a:hover { 
+  color: #31d35c; 
+}
+.footer-cta { 
+  text-align: right; 
+}
+.footer-cta p { 
+  margin-top: 20px; 
+  color: #9698a6; 
+  font-size: 0.8rem; 
+}
+
+
+  /* Footer Layout for mobile */
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    gap: 30px;
+    text-align: center;
+  }
+
+  .footer-links {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .footer-cta {
+    text-align: center;
+  }
+}
+
+/* =========================================
+   1. THE UNIVERSAL CARD SYSTEM
+   ========================================= */
+
+/* The base white box with shadow used on all pages */
+.horizontal-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 30px;
+  margin-bottom: 24px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  border: 1px solid #f0f0f0;
+  display: flex;
+  box-sizing: border-box; /* Ensures padding doesn't break width */
+}
+
+/* Horizontal Layout: Used for Blog and Careers list */
+.row-layout {
+  flex-direction: row; 
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap; /* FIX: Prevents text from overlapping button */
+  gap: 20px;
+}
+
+/* Vertical Layout: Used for the Contact Form */
+.column-layout {
+  flex-direction: column;
+  align-items: stretch;
+  text-align: left;
+}
+
+/* =========================================
+   2. BLOG & CAREERS CONTENT FIX
+   ========================================= */
+
+/* Category Label (e.g., BANKING, ENGINEERING) */
+.category-tag {
+  min-width: 120px; /* Gives consistent spacing to the left labels */
+  color: #31d35c;
+  font-weight: bold;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Main Text Area (Title and Date/Author) */
+.card-main-info {
+  flex: 1;              /* This tells the text to take up all available room */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 40px;
+}
+
+.card-main-info h3 {
+  color: #2d314d;
+  margin: 0 0 5px 0;
+  font-size: 1.2rem;
+}
+
+.card-main-info p {
+  color: #9698a6;
+  margin: 0;
+  font-size: 0.9rem;
+}
+/* --- FIX: DATE AND META SPACING --- */
+
+.card-meta {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+.card-meta span {
+  margin-right: auto;   /* CRITICAL: This pushes the button to the far right */
+  color: #9698a6;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;             /* Space between calendar icon and text */
+}
+/* =========================================
+   3. PAGE WRAPPERS & MOBILE FIX
+   ========================================= */
+
+.page-container {
+  padding: 40px 10%;
+  background-color: #fafafa;
+  min-height: 80vh;
+}
+
+.page-header {
+  margin-bottom: 50px;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.page-header h1 {
+  font-size: 3rem;
+  color: #2d314d;
+  margin: 0 0 15px 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+/* --- Responsive Adjustments --- */
+@media (max-width: 768px) {
+  .page-container {
+    padding: 30px 5%;
+  }
+
+  .page-header h1 {
+    font-size: 2.2rem;
+  }
+
+  /* Force all Row cards to stack on mobile */
+  .row-layout {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  }
+
+  .card-main-info {
+    margin: 15px 0;
+    text-align: center;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* Read More link for Blog */
+.read-more-btn {
+  flex-shrink: 0;       /* Prevents the button from becoming narrow */
+  margin-left: 20px;    /* Guaranteed minimum gap */
+  background: linear-gradient(to right, #31d35c, #2bb7da);
+  color: white;
+  border: none;
+  padding: 10px 25px;
+  border-radius: 25px;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+  .job-card {
+    flex-direction: column;
+    text-align: center;
+    gap: 15px;
+  }
+}
+
+/* Job Card Specifics */
+.jobs-list {
   display: flex;
   flex-direction: column;
+  gap: 20px;
+}
+
+.job-card {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  flex-direction: row;
 }
 
-.App-link {
-  color: #61dafb;
+.job-dept {
+  color: #31d35c;
+  font-weight: bold;
+  font-size: 0.8rem;
+  text-transform: uppercase;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.job-details {
+  color: #9698a6;
+  font-size: 0.9rem;
+}
+
+.invite-btn.small {
+  padding: 8px 20px;
+  font-size: 0.8rem;
+}
+
+
+/* contact form */
+.contact-wrapper {
+  max-width: 600px;
+  margin: 0 auto; /* Centers the form on the page */
+}
+
+.form-card {
+  padding: 40px;
+  flex-direction: column; /* Stack form elements vertically */
+}
+
+.inquiry-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  gap: 8px;
+}
+
+.form-group label {
+  font-weight: bold;
+  color: #2d314d;
+  font-size: 0.9rem;
+}
+
+.form-group input, 
+.form-group select, 
+.form-group textarea {
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-family: inherit;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #31d35c;
+}
+
+.status-msg {
+  color: #31d35c;
+  font-weight: bold;
+  margin-top: 10px;
+  text-align: center;
+}
+
+/* Contact Grid Layout */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr; /* Left column smaller than right */
+  gap: 50px;
+  align-items: start;
+}
+
+.contact-info {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding-top: 20px;
+}
+
+.info-item h4 {
+  color: #31d35c; /* Green color for labels */
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 5px;
+}
+
+.info-item p {
+  color: #2d314d;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+/* Form container specific adjustments */
+.contact-form-container .horizontal-card {
+  flex-direction: column; /* Stack inputs vertically inside the box */
+  align-items: stretch;
+  padding: 40px;
+}
+
+/* Responsive Mobile view */
+@media (max-width: 768px) {
+  .contact-grid {
+    grid-template-columns: 1fr; /* Stack columns on mobile */
+    gap: 40px;
   }
-  to {
-    transform: rotate(360deg);
+  
+  .contact-info {
+    text-align: center;
   }
+}
+
+
+/* This ensures the 'horizontal-card' actually looks like a box */
+.horizontal-card {
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 30px;
+  margin-bottom: 20px; /* Space between boxes */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* Makes it pop */
+  display: flex;
+  align-items: center;
+  border: 1px solid #f0f0f0; /* Subtle border */
+  text-align: left;
+}
+
+/* Specific styling for contact boxes to make them smaller/tighter */
+.contact-box {
+  padding: 20px 30px;
+  margin-bottom: 15px;
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.info-item h4 {
+  color: #31d35c;
+  margin: 0;
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+}
+
+.info-item p {
+  margin: 5px 0 0 0;
+  font-weight: 500;
+  color: #2d314d;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 40px;
+  align-items: start;
+}
+
+.contact-item-box {
+  margin-bottom: 20px;
+  padding: 20px 30px;
+  justify-content: flex-start; /* Aligns content to the left */
+}
+
+.contact-form-box {
+  flex-direction: column; /* Force vertical stacking for form elements */
+  align-items: stretch;   /* Make inputs take full width */
+  padding: 40px;
+  text-align: left;
+}
+
+.form-title {
+  margin-bottom: 25px;
+  color: #2d314d;
+  font-size: 1.5rem;
+}
+
+.form-group {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  font-weight: 700;
+  color: #2d314d;
+  font-size: 0.9rem;
+}
+
+.form-group input, 
+.form-group textarea {
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+.form-btn {
+  margin-top: 10px;
+  width: 100%; /* Makes button full width like in your screenshot */
+}
+
+/* --- Mobile Fix --- */
+@media (max-width: 768px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.blog-card-layout, 
+.about-card-layout {
+  flex-direction: row; /* Horizontal layout */
+  align-items: center;
+  justify-content: space-between;
 }
