@@ -1,6 +1,31 @@
-# Getting Started with Create React App
+# Digitalbank - Modern Banking Landing Page
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A sleek, responsive React application for a next-generation digital banking platform. This project focuses on clean UI/UX, reusable Flexbox components, and a mobile-first design approach.
+
+## 🚀 Features
+
+* **Responsive Navigation**: Sticky navbar with a custom animated hover effect and a mobile-ready hamburger menu.
+* **Dynamic Blog System**: A categorized blog layout using a "Universal Card System" that prevents content overlapping.
+* **Modular CSS**: Organized "Batch" styling logic separating global, layout, and component-specific styles.
+* **Careers & Contact**: Professional layouts for job listings and a validated inquiry form.
+* **Modern UI**: High-fidelity design featuring linear gradients, Public Sans typography, and soft shadows.
+
+## 🛠️ Tech Stack
+
+* **Frontend**: React.js
+* **Styling**: Pure CSS3 (Flexbox & Grid)
+* **Icons**: Custom SVG/Emoji integration
+* **Fonts**: [Public Sans](https://fonts.google.com/specimen/Public+Sans)
+
+## 📁 Project Structure
+```test
+src/
+├── components/       # Reusable UI components
+├── pages/            # Blog, About, Careers, and Contact pages
+├── App.js            # Main application logic
+├── App.css           # Clean, batch-organized stylesheets
+└── index.js          # Entry point
+```
 
 ## Available Scripts
 
@@ -39,32 +64,3 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
