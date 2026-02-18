@@ -1,7 +1,5 @@
 
-# 🏦 Digitalbank
-
-> A sleek, high-fidelity landing page for next-generation banking.
+# 🏦 Digitalbank | landing page for next-generation banking.
 
 Digitalbank is a modern React application designed with a **mobile-first philosophy**. It showcases a clean, professional aesthetic using Public Sans typography, linear gradients, and a robust "Universal Card System" to ensure content integrity across all devices.
 
