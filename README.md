@@ -64,7 +64,6 @@ npm install
 ```
 
 
-
 ### Available Scripts
 
 | Command | Result |
@@ -76,11 +75,6 @@ npm install
 
 ---
 
-## 📸 Screenshots
-
-*(Tip: Add images of your desktop and mobile views here to show off the UI!)*
-
----
 
 ## 📄 License
 
